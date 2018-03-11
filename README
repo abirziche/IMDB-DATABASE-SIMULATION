@@ -1,1 +1,60 @@
-#tema3 SD
+# sd-tema3
+    Studenti: Birziche Andrei-Lucian, Raduta Andrei
+    Grupa: 312CA
+
+    Pentru realizarea temei, ne-am intalnit si am cazut de acord asupra
+structurilor de care avem nevoie, urmand sa le modificam sau sa le folosim in
+functie de cerintele functiilor realizate de fiecare.
+    La fiecare adaugare de film si operatiuni asupra ratingurilor (add, update,
+remove) am retinut detalii despre filme, actori, useri si ratingurile date
+de acestia, precum si legaturi intre acestea. Majoritatea au fost implementate
+sub forma de hashtable cu ajutorul map sau unordered_map din stl.
+
+    Birziche Andrei-Lucian: Am implementat urmatoarele functii:
+1) get_longest_career_actor - pentru aceasta functie m-am folosit de
+    hashtable-ul de actori in care pastram si anii corespunzatori primei si
+    ultimei aparitii, iar pentru fiecare adaugare de film acestia se schimbau
+    corespunzator. Cand este primita aceasta interogare, caut prin tot
+    hashtable-ul si returnez cel mai longeviv actor.
+2) get_best_year_for_category - pentru aceasta functie am cautat mai intai prin
+    hashtable-ul de filme, toate care respecta categoria ceruta si in caz ca e
+    gasita pastrez intr-un hashtable local anii filmelor ce fac parte din
+    categoria respectiva impreuna cu numarul de filme din acel an si suma
+    ratingurilor date pe fiecare film. In final ma plimb prin acesta hashtable
+    si fac media aritmetica pentru fiecare an.
+3) get_2nd_degree_colleagues - pentru aceasta functie am luat in structura
+    "Actor" un hashtable pentru colegii fiecaruia, iar cand interogarea va fi
+    primita vom cauta colegii de gradul 2 pentru actorul cerut si ii vom pastra
+    local, urmand sa-i afisam la final.
+4) get_top_k_most_recent_movies - pentru aceasta functie pastrez toate filmele
+    intr-un hashtable, fiind ordonate dupa timestamp, iar la primirea
+    interogarii imi ramane doar sa ii afisez de la sfarsit spre inceput.
+5) get_top_k_most_popular_movies - pentru aceasta functie, date fiind
+    conditiile, am privit-o altfel si anume am creat un vector la o structura ce
+    retine id-ul filmului si numarul de ratinguri, modificandu-l in functie de
+    adaugarile/schimbarile primite, urmand sa se faca sortarea ceruta doar daca
+    interogarea a fost precedata imediat de acestea, si doar sa se afiseze in
+    cazul contrar.
+
+    Raduta Andrei: Am implementat functiile:
+1) get_rating - Am retinut suma tuturor ratingurilor date pentru un film si
+    stiind marimea listei cu utilizatorii care au dat rating pentru film (
+    si valoarea acestuia), doar am impartit aceasta suma la marimea listei
+    si am returnat media sub forma de string.
+2) get_most_influential_director - Am avut un hashtable pentru toti directorii
+    in care am retinut toti actorii cu care a jucat, urmand doar sa il
+    selectam cu cei mai multi actori.
+3) get_top_k_actor_pairs - Pentru fiecare actor am tinut minte la adaugarea
+    unui nou film cu ce actori a jucat si am actualiat aceste filme cand se
+    adauga un nou film. Cand aceasta functie era apelata doar construiam
+    un vector de structuri care tineau numele celor doi actori si de cate ori
+    au jucat impreuna. Pentru sortarea acestui vector am suprascris operatorul
+    < si am folosit functia sort din biblioteca algorithm.
+4) get_top_k_partners_for_actor - Stiind pentru fiecare actor cu ce actori a
+    mai jucat deja, doar a ramas sa numar cu cati a jucat fiecare si sa realizez
+    acest clasament tot pe ideea de la functia anterioara, cu vectorul si
+    sortare cu suprascrierea operatorului < . (pentru a sorta pe criteriile
+    dorite de mine)
+5) get_avg_rating_in_range - Am parcurs toate filmele din hashtable-ul de
+    filme, am verificat daca au aparut in perioada ceruta si am calculat media
+    pentru aceste filme.
